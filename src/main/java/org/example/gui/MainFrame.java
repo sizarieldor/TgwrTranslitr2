@@ -96,9 +96,9 @@ public class MainFrame {
         String output = EngTextEngine.translWordDigraphsSimple(input);
         output = EngTextEngine.translWordCharsSimple(output);
         output = TgwTextEngine.fixDoubleConsonants(output);
-
-
-        output = TgwTextEngine.fixFinalNGs(output); //TODO
+        output = TgwTextEngine.fixNasals(output);
+//        output = TgwTextEngine.
+//        output = TgwTextEngine.fixFinalNGs(output); //TODO
         return output;
     }
     private Font generateTengwarFont() {
