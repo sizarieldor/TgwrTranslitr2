@@ -20,8 +20,9 @@ public class EngTextEngine {
                 .replaceAll("th", "[3]")
                 .replaceAll("wh", "[o]")
                 .replaceAll("zh", "[f]")
-                .replaceAll("nn", "[5]")
-                .replaceAll("mm", "[t]");
+//                .replaceAll("nn", "[5]") //NB these two are done in the "double consonants" method in the Tengwar Engine class
+//                .replaceAll("mm", "[t]")
+                ;
         return outputWord;
     }
 
@@ -30,7 +31,6 @@ public class EngTextEngine {
         Map<Character, String> singleCharsMap = initSingleCharsMap();
         char[] inputCharArr = inputWord.toCharArray();
         StringBuilder outputWord = new StringBuilder();
-//        ArrayDeque<Character> tengUnpacker = new ArrayDeque<>();
         boolean comingCharIsMapped = false;
         for (int i = 0; i < inputCharArr.length; i++) {
             char c = inputCharArr[i];
@@ -50,7 +50,6 @@ public class EngTextEngine {
                 }
             }
         }
-
         return outputWord.toString();
     }
 

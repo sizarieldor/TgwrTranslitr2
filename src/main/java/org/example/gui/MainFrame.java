@@ -48,13 +48,13 @@ public class MainFrame {
         frame.add(inputArea);
 
         final String html = "<html><body style='width: %1spx'>%1s";
-        outputLabel = new JLabel("", SwingConstants.CENTER);
+        outputLabel = new JLabel("output1", SwingConstants.CENTER);
         outputLabel.setBounds(PADDING + AREA_WIDTH + PADDING, PADDING, AREA_WIDTH, OUTPUT_HEIGHT);
         outputLabel.setVerticalAlignment(SwingConstants.TOP);
         frame.add(outputLabel);
         outputLabel.setFont(tengwarFont);
 
-        outputLabel2 = new JLabel("", SwingConstants.CENTER);
+        outputLabel2 = new JLabel("output2", SwingConstants.CENTER);
         outputLabel2.setBounds(PADDING + AREA_WIDTH + PADDING, PADDING + OUTPUT_HEIGHT + PADDING, AREA_WIDTH, OUTPUT_HEIGHT);
         outputLabel2.setVerticalAlignment(SwingConstants.TOP);
         frame.add(outputLabel2);
@@ -72,30 +72,33 @@ public class MainFrame {
             public void actionPerformed(ActionEvent e) {
                 //get mode
                 String input = inputArea.getText().toLowerCase();
-                if (modePicker.getItemAt(modePicker.getSelectedIndex()).equals(PICKER_MODE_AUTHOR_OMATEHTA)) {
+                String pickedMode = modePicker.getItemAt(modePicker.getSelectedIndex());
+                String transliteratedOutput = performTranslitSequence(input, pickedMode);
+                String formattedOutput = String.format(html, 200, transliteratedOutput);
+                outputLabel.setText(formattedOutput);
+                outputLabel2.setText(formattedOutput);
+                /*if (modePicker.getItemAt(modePicker.getSelectedIndex()).equals(PICKER_MODE_AUTHOR_OMATEHTA)) {
 //                    tengwarMode = TengwarMode.OMATEHTA_AUTHOR;
-                    String output = String.format(html, 200, performTranslitSequence(input));
-                    outputLabel.setText(output);
-                    outputLabel2.setText(output);
                 } else if (modePicker.getItemAt(modePicker.getSelectedIndex()).equals(PICKER_MODE_AUTHOR_FULL)) {
 //                    tengwarMode = TengwarMode.FULLMODE_AUTHOR;
-                    String output = String.format(html, 200, performTranslitSequence(input));
-                    outputLabel.setText(output);
-                    outputLabel2.setText(output);
-                }
+                    String formattedOutput = String.format(html, 200, performTranslitSequence(input));
+                    outputLabel.setText(formattedOutput);
+                    outputLabel2.setText(formattedOutput);
+                }*/
             }
         });
 
         frame.setVisible(true);
     }
 
-    private String performTranslitSequence(String input) {
+    private String performTranslitSequence(String input, String pickedMode) {
 
         String output = EngTextEngine.translWordDigraphsSimple(input);
         output = EngTextEngine.translWordCharsSimple(output);
-        output = TgwTextEngine.fixFinalNGs(output);
+        output = TgwTextEngine.fixDoubleConsonants(output);
 
 
+        output = TgwTextEngine.fixFinalNGs(output); //TODO
         return output;
     }
     private Font generateTengwarFont() {

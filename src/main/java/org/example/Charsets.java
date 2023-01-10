@@ -47,7 +47,7 @@ public class Charsets {
         singleCharsMap.put('2', "ò");
         singleCharsMap.put('3', "ó");
         singleCharsMap.put('4', "ô");
-        singleCharsMap.put('5', "ô");
+        singleCharsMap.put('5', "õ");
         singleCharsMap.put('6', "ö");
         singleCharsMap.put('7', "ø");
         singleCharsMap.put('8', "ù");
