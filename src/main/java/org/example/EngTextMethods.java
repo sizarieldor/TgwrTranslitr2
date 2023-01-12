@@ -4,7 +4,11 @@ import java.util.Map;
 
 import static org.example.Charsets.*;
 
-public class EngTextEngine {
+public class EngTextMethods {
+
+//    public static String revertVowels(String inputText) { //strip diacritics from letters
+//        return inputText.replaceAll()
+//    }
 
     //use this to transliterate the following digraphs into their corresponding tengwar
     public static String translWordDigraphsSimple(String inputWord) {

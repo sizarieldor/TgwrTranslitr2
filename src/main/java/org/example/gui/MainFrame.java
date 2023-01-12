@@ -1,7 +1,8 @@
 package org.example.gui;
 
-import org.example.EngTextEngine;
-import org.example.TgwTextEngine;
+import org.example.EngTextMethods;
+import org.example.TgwTehtarTextMethods;
+import org.example.TgwTextMethods;
 import org.example.TengwarMode;
 
 import javax.swing.*;
@@ -64,7 +65,7 @@ public class MainFrame {
         modePicker.setBounds(PADDING, PADDING + OUTPUT_HEIGHT + PADDING, BUTTON_WIDTH, PICKER_HEIGHT);
         frame.add(modePicker);
 
-        goButton = new JButton("Transliterate");
+        goButton = new JButton("Transliterate"); //TODO activate with Enter key
         goButton.setBounds(PADDING, PADDING + OUTPUT_HEIGHT + PADDING + PICKER_HEIGHT + PADDING, BUTTON_WIDTH, BUTTON_HEIGHT);
         frame.add(goButton);
         goButton.addActionListener(new ActionListener() {
@@ -92,13 +93,20 @@ public class MainFrame {
     }
 
     private String performTranslitSequence(String input, String pickedMode) {
-
-        String output = EngTextEngine.translWordDigraphsSimple(input);
-        output = EngTextEngine.translWordCharsSimple(output);
-        output = TgwTextEngine.fixDoubleConsonants(output);
-        output = TgwTextEngine.fixNasals(output);
-//        output = TgwTextEngine.
-//        output = TgwTextEngine.fixFinalNGs(output); //TODO
+        String output = EngTextMethods.translWordDigraphsSimple(input);
+        output = EngTextMethods.translWordCharsSimple(output);
+        output = TgwTextMethods.fixOfThes(output);
+        if (pickedMode.equals(PICKER_MODE_AUTHOR_FULL)) {
+            //TODO and, the/of/ofthe
+//            output = TgwTextMethods.putDotsForFullMode(output);
+        } else if (pickedMode.equals(PICKER_MODE_AUTHOR_OMATEHTA)) {
+            output = TgwTextMethods.fixNasals(output);
+            output = TgwTextMethods.fixDoubleConsonants(output);
+            output = TgwTehtarTextMethods.tehtarizeVowels(output);
+            output = TgwTehtarTextMethods.fixDiphtongs(output);
+        }
+//        output = TgwTextMethods.
+//        output = TgwTextMethods.fixFinalNGs(output); //TODO
         return output;
     }
     private Font generateTengwarFont() {
@@ -112,7 +120,7 @@ public class MainFrame {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        Font tengwarFont = tengwarFontSmall.deriveFont(15.0F);
+        Font tengwarFont = tengwarFontSmall.deriveFont(20.0F);
         return tengwarFont;
     }
 }

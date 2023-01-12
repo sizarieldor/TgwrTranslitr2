@@ -133,7 +133,8 @@ public class TranslitEngine {
 
     public static String putTehtarOnLongCarriers(String input) {
 
-        return input.replace("]]", "~C") //long carrier + tehta
+        return input
+                .replace("]]", "~C") //long carrier + tehta
                 .replace("ll", "~V")
                 .replace("``", "~B")
                 .replace("hh", "~N")

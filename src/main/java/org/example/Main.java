@@ -21,8 +21,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         while (true) {
             String input = sc.nextLine();
-            String output = EngTextEngine.translWordDigraphsSimple(input);
-            output = EngTextEngine.translWordCharsSimple(output);
+            String output = EngTextMethods.translWordDigraphsSimple(input);
+            output = EngTextMethods.translWordCharsSimple(output);
             System.out.println(output);
         }
     }

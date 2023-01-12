@@ -1,30 +1,30 @@
 package org.example;
 
-public class TgwTextEngine {
+public class TgwTextMethods {
     //all these methods work with raw tengwar text, not Latin alphabet
     //TODO only use String[] in and out of the method, no String/StringBuilder?
     /*
     consonants:
-                .replaceAll("ww", "w:") //bb, wide
-                .replace("zz", "z;") //cc, narrow
-                .replace("22", "2:") //dd, wide
-                .replace("ee", "e;") //ff, narrow
-                .replace("xx", "x:") //gg, wide
-                .replace("99", "9;") //hh, narrow
-                .replace("ss", "s:") //jj, wide
-                .replace("zz", "z;") //kk, narrow
-                .replace("jj", "j:") //ll, wide
-                .replace("yy", "t") //mm, DIGRAPH?
-                .replace("66", "5") //nn, DIGRAPH?
-                .replace("qq", "q;") //pp, narrow
-                .replace("zz", "z;") //qq, narrow
-                .replace("77", "7;") //rr, narrow
-                .replace("88", "k") //ss, SPECIAL
-                .replace("11", "1;") //tt, narrow
-                .replace("rr", "r;") //vv, narrow
-                .replace("nn", "n;") //ww, narrow
-                .replace("AA", "A;") //xx, narrow
-                .replace(",,", ""); //zz, SPECIAL
+                ("ww", "w:") //bb, wide
+                ("zz", "z;") //cc, narrow
+                ("22", "2:") //dd, wide
+                ("ee", "e;") //ff, narrow
+                ("xx", "x:") //gg, wide
+                ("99", "9;") //hh, narrow
+                ("ss", "s:") //jj, wide
+                ("zz", "z;") //kk, narrow
+                ("jj", "j:") //ll, wide
+                ("yy", "t") //mm, DIGRAPH?
+                ("66", "5") //nn, DIGRAPH?
+                ("qq", "q;") //pp, narrow
+                ("zz", "z;") //qq, narrow
+                ("77", "7;") //rr, narrow
+                ("88", "k") //ss, SPECIAL
+                ("11", "1;") //tt, narrow
+                ("rr", "r;") //vv, narrow
+                ("nn", "n;") //ww, narrow
+                ("AA", "A;") //xx, narrow
+                (",,", ""); //zz, SPECIAL
      */
 
     public static String fixDoubleConsonants(String inputText) {
@@ -77,23 +77,6 @@ public class TgwTextEngine {
         //'6' = n
         //'y' = m
          */
-        return inputText.replaceAll("yw", "wP") //mb
-                        .replaceAll("6z", "zp") //nc/k/q
-                        .replaceAll("62", "2P") //nd
-                        .replaceAll("6e", "ep") //mf
-                        .replaceAll("6x", "xP") //ng
-                        .replaceAll("6s", "sp") //nj
-                        .replaceAll("yq", "qp") //mp
-                        .replaceAll("61", "1p") //nt
-                        .replaceAll("6r", "rP") //nv
-                        .replaceAll("6a", "aP") //nch
-                ;
-    }
-
-    public static String fixDiphtongs(String inputText) {
-        /*
-
-         */
         return inputText
                 .replaceAll("yw", "wP") //mb
                 .replaceAll("6z", "zp") //nc/k/q
@@ -103,10 +86,26 @@ public class TgwTextEngine {
                 .replaceAll("6s", "sp") //nj
                 .replaceAll("yq", "qp") //mp
                 .replaceAll("61", "1p") //nt
+                .replaceAll("6r", "rP") //nv
+                .replaceAll("6a", "aP") //nch
                 ;
     }
 
-    //    public static String fixOfThes(String input) {
-//        input.replaceAll(" of the", " ");
-//    }
+
+    public static String putDotsForFullMode(String inputText) {
+        return inputText
+                .replaceAll("]","]G")
+                .replaceAll("`","`B")
+                ;
+    }
+
+
+        public static String fixOfThes(String input) {
+        return input
+                .replaceAll(" he 3l ", " ") //of the
+                .replaceAll(" he ", " ") //of
+                .replaceAll(" 3l ", " ") //the
+                .replaceAll(" ]62 ", " ") //and
+        ;
+    }
 }
