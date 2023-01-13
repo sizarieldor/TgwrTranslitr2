@@ -102,10 +102,10 @@ public class TgwTextMethods {
 
         public static String fixOfThes(String input) {
         return input
-                .replaceAll(" he 3l ", " ") //of the
-                .replaceAll(" he ", " ") //of
-                .replaceAll(" 3l ", " ") //the
-                .replaceAll(" ]62 ", " ") //and
+                .replaceAll(" ]62 ", " 2P ") //and
+                .replaceAll(" 3l ", " @ ") //the
+                .replaceAll(" he ", " W ") //of
+                .replaceAll(" he 3l ", " W: ") //of the
         ;
     }
 }

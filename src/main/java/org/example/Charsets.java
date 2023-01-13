@@ -35,14 +35,14 @@ public class Charsets {
         singleCharsMap.put('y', "i");
         singleCharsMap.put('z', "k");
         singleCharsMap.put(' ', " "); // ?
-        singleCharsMap.put('.', "=-=");
-        singleCharsMap.put(',', "=");
+        singleCharsMap.put('.', " =-="); //NB space in front of the punctuation, to enable the of/the/ofthe method to work accurately; TODO remove these spaces?
+        singleCharsMap.put(',', " =");
         singleCharsMap.put('-', "\\");
         singleCharsMap.put('–', "Â");
         singleCharsMap.put('\'', "B");
-        singleCharsMap.put('!', "Á");
-        singleCharsMap.put('?', "À");
-        singleCharsMap.put(';', "Ã");
+        singleCharsMap.put('!', " Á");
+        singleCharsMap.put('?', " À");
+        singleCharsMap.put(';', " Ã");
         singleCharsMap.put('1', "ñ");
         singleCharsMap.put('2', "ò");
         singleCharsMap.put('3', "ó");

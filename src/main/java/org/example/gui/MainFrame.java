@@ -97,7 +97,7 @@ public class MainFrame {
         output = EngTextMethods.translWordCharsSimple(output);
         output = TgwTextMethods.fixOfThes(output);
         if (pickedMode.equals(PICKER_MODE_AUTHOR_FULL)) {
-            //TODO and, the/of/ofthe
+            
 //            output = TgwTextMethods.putDotsForFullMode(output);
         } else if (pickedMode.equals(PICKER_MODE_AUTHOR_OMATEHTA)) {
             output = TgwTextMethods.fixNasals(output);
