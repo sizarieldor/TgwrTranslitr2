@@ -98,7 +98,7 @@ public class MainFrame {
         output = TgwTextMethods.fixOfThes(output);
         if (pickedMode.equals(PICKER_MODE_AUTHOR_FULL)) {
             
-//            output = TgwTextMethods.putDotsForFullMode(output);
+            output = TgwTextMethods.putDotsForFullMode(output);
         } else if (pickedMode.equals(PICKER_MODE_AUTHOR_OMATEHTA)) {
             output = TgwTextMethods.fixNasals(output);
             output = TgwTextMethods.fixDoubleConsonants(output);

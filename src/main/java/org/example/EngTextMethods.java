@@ -12,18 +12,19 @@ public class EngTextMethods {
 
     //use this to transliterate the following digraphs into their corresponding tengwar
     public static String translWordDigraphsSimple(String inputWord) {
-        String outputWord = inputWord.replaceAll("dh", "4")
-                .replaceAll("dh", "[4]")
-                .replaceAll("ch", "[a]")
-                .replaceAll("gh", "[v]")
-                .replaceAll("kh", "[Z]")
-                .replaceAll("lh", "[m]")
-                .replaceAll("ph", "[Q]")
-                .replaceAll("rh", "[u]")
-                .replaceAll("sh", "[d]")
-                .replaceAll("th", "[3]")
-                .replaceAll("wh", "[o]")
-                .replaceAll("zh", "[f]")
+        String outputWord = inputWord
+                .replaceAll("dh", "4")
+                .replaceAll("dh", "┤4╡") //Alt + 180, Alt + 181
+                .replaceAll("ch", "┤a╡")
+                .replaceAll("gh", "┤v╡")
+                .replaceAll("kh", "┤Z╡")
+                .replaceAll("lh", "┤m╡")
+                .replaceAll("ph", "┤Q╡")
+                .replaceAll("rh", "┤u╡")
+                .replaceAll("sh", "┤d╡")
+                .replaceAll("th", "┤3╡")
+                .replaceAll("wh", "┤o╡")
+                .replaceAll("zh", "┤f╡")
 //                .replaceAll("nn", "[5]") //NB these two are done in the "double consonants" method in the Tengwar Engine class
 //                .replaceAll("mm", "[t]")
                 ;
@@ -38,9 +39,9 @@ public class EngTextMethods {
         boolean comingCharIsMapped = false;
         for (int i = 0; i < inputCharArr.length; i++) {
             char c = inputCharArr[i];
-            if (c == '[') {
+            if (c == '┤') {
                 comingCharIsMapped = true;
-            } else if (c != ']') {
+            } else if (c != '╡') {
                 if (comingCharIsMapped) {
                     outputWord.append(c);
                     comingCharIsMapped = false;

@@ -1,5 +1,7 @@
 package org.example;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class TgwTextMethods {
     //all these methods work with raw tengwar text, not Latin alphabet
     //TODO only use String[] in and out of the method, no String/StringBuilder?
@@ -28,7 +30,8 @@ public class TgwTextMethods {
      */
 
     public static String fixDoubleConsonants(String inputText) {
-        return inputText.replaceAll("ww", "w:") //bb, wide
+       /* return inputText.replaceAll(
+                "ww", "w:") //bb, wide
                 .replaceAll("zz", "z;") //cc, narrow
                 .replaceAll("22", "2:") //dd, wide
                 .replaceAll("ee", "e;") //ff, narrow
@@ -47,7 +50,11 @@ public class TgwTextMethods {
                 .replaceAll("rr", "r;") //vv, narrow
                 .replaceAll("nn", "n;") //ww, narrow
                 .replaceAll("AA", "A;") //xx, narrow
-                .replaceAll(",,", ""); //zz, SPECIAL
+                .replaceAll(",,", ""); //zz, SPECIAL */
+        String[] rawChars = new String[]{"ww","zz", "22", "ee", "xx", "99", "ss", "zz", "jj", "yy", "66", "qq", "zz", "77", "88", "11", "rr", "nn", "AA", ",,"};
+        String[] fixedChars = new String[]{"w:", "z;", "2:", "e;", "x:", "9;", "s:", "z;", "j:", "t", "5", "q;", "z;", "7;", "k", "1;", "r;", "n;", "A;", ""};
+
+        return StringUtils.replaceEach(inputText, rawChars, fixedChars);
     }
 
 
@@ -77,7 +84,9 @@ public class TgwTextMethods {
         //'6' = n
         //'y' = m
          */
-        return inputText
+        String[] rawChars = new String[]{"yw", "6z","62","6e","6x","6s","yq","61","6r","6a"};
+        String[] fixedChars = new String[]{"wP", "zp", "2P", "ep", "xP", "sp", "qp", "1p", "rP", "aP"};
+/*        return inputText
                 .replaceAll("yw", "wP") //mb
                 .replaceAll("6z", "zp") //nc/k/q
                 .replaceAll("62", "2P") //nd
@@ -88,24 +97,34 @@ public class TgwTextMethods {
                 .replaceAll("61", "1p") //nt
                 .replaceAll("6r", "rP") //nv
                 .replaceAll("6a", "aP") //nch
-                ;
-    }
+                ;*/
+        return StringUtils.replaceEach(inputText, rawChars, fixedChars);
 
+    }
 
     public static String putDotsForFullMode(String inputText) {
-        return inputText
+        String[] rawChars = new String[]{"]","`"};
+        String[] fixedChars = new String[]{"]G","`B"};
+
+        return StringUtils.replaceEach(inputText, rawChars, fixedChars);
+
+/*        return inputText
                 .replaceAll("]","]G")
                 .replaceAll("`","`B")
-                ;
+                ;*/
     }
 
 
-        public static String fixOfThes(String input) {
-        return input
-                .replaceAll(" ]62 ", " 2P ") //and
-                .replaceAll(" 3l ", " @ ") //the
-                .replaceAll(" he ", " W ") //of
-                .replaceAll(" he 3l ", " W: ") //of the
-        ;
+        public static String fixOfThes(String inputText ) {
+//            String[] rawChars = new String[]{" ]62 "," 3l "," he "," he 3l "};
+//            String[] fixedChars = new String[]{" 2P "," @ "," W "," W: "};
+//            return StringUtils.replaceEach(inputText, rawChars, fixedChars);
+
+            return inputText
+                    .replaceAll(" he 3l ", " W: ")
+                    .replaceAll(" ]62 ", " 2P ") //and
+                    .replaceAll(" 3l ", " @ ") //the
+                    .replaceAll(" he ", " W ") //of
+                    ; //of the
     }
 }

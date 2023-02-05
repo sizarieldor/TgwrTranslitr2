@@ -1,15 +1,22 @@
 package org.example;
 
+import org.apache.commons.lang3.StringUtils;
+
+import javax.xml.stream.events.StartDocument;
+
 public class TgwTehtarTextMethods {
-    public static String tehtarizeVowels(String inputText) {
-        return inputText
-                .replace("]","`C")//a
-                .replace("l","`V")//e
-                .replace("`","`B")//i
-                .replace("h","`N")//o
-                .replace(".","`M")//u
-                .replace("i","`×")//y
-                ;
+    public static String tehtarizeVowels(String inputText) { //TODO these replacements must be done simultaneously, not one after the other
+        String[] rawChars = new String[]{"]", "l", "`", "h", ".", "i"};
+        String[] fixedChars = new String[]{"`C", "`V", "`B", "`N", "`M", "`×"};
+        //        return inputText
+//                .replace("]","`C")//a
+//                .replace("l","`V")//e
+//                .replace("`","`B")//i
+//                .replace("h","`N")//o
+//                .replace(".","`M")//u
+//                .replace("i","`×")//y
+//                ;
+        return StringUtils.replaceEach(inputText, rawChars, fixedChars);
     }
 
     public static String fixDiphtongs(String inputText) { //technically, any two vowels next to each other
@@ -19,7 +26,37 @@ public class TgwTehtarTextMethods {
         ao eo io oo uo yo
         au eu iu ou uu yu
          */
-        return inputText
+        String[] rawChars = new String[]{
+                "`C`C",                "`V`C",
+                "`B`C",                "`N`C",
+                "`M`C",                "`×`C",
+                "`C`V",                "`V`V",
+                "`B`V",                "`N`V",
+                "`M`V",                "`×`V",
+                "`C`N",                "`V`N",
+                "`B`N",                "`N`N",
+                "`M`N",                "`×`N",
+                "`C`M",                "`B`M",
+                "`V`M",                "`N`M",
+                "`M`M",                "`×`M",
+                "`B`B",                "`×`×"
+        };
+
+        String[] fixedChars = new String[]{"~C",
+                "]R",                "]T",
+                "]N",                "]J",
+                "]Õ",                "lE",
+                "~V",                "lT",
+                "lN",                "lJ",
+                "lÕ",                "hE",
+                "hR",                "hT",
+                "~N",                "hJ",
+                "hÕ",                ".E",
+                ".T",                ".R",
+                ".N",                "~M",
+                ".Õ",                "~B",
+                "~×"};
+       /* return inputText
                 .replace("`C`C", "~C")//long carrier + tehta; aa
                 .replace("`V`C", "]R")//hardcoded ea
                 .replace("`B`C", "]T")//hardcoded ia
@@ -50,7 +87,9 @@ public class TgwTehtarTextMethods {
 
                 .replace("`B`B", "~B")//ii
                 .replace("`×`×", "~×")//yy
-                ;
+                ;*/
+        return StringUtils.replaceEach(inputText, rawChars, fixedChars);
+
     }
 
     public static String putTehtarOnSucceedingTengwar() { //TODO
