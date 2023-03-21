@@ -262,11 +262,11 @@ public class TranslitEngine {
 
     public static String tehtarizeVowels(String tengwarText) {
         //NB this method assumes that any two consecutive vowels are already turned into a diphtong
-        HashMap<Character, Character> mapVowelsTengwarTehtarOnCarr = Charsets.initTengwarTehtarMap(); //use this to convert vowel tengwar into vowel tehtar
+        HashMap<Character, Character> mapVowelsTengwarTehtarOnCarr = CharMaps.initTengwarTehtarMap(); //use this to convert vowel tengwar into vowel tehtar
         Set<Character> setVowelCarryingNarrowTengwar = Charsets.initVowelCarryingNarrowTengwarSet(); //this includes diphtongs
         Set<Character> setVowelCarryingWideTengwar = Charsets.initVowelCarryingWideTengwarSet();
-        HashMap<Character, Character> mapVowelTehtarForNarrowTengwar = Charsets.initVowelTehtarForNarrowTengwarMap();
-        HashMap<Character, Character> mapVowelTehtarForWideTengwar = Charsets.initVowelTehtarForWideTengwarMap();
+        HashMap<Character, Character> mapVowelTehtarForNarrowTengwar = CharMaps.initVowelTehtarForNarrowTengwarMap();
+        HashMap<Character, Character> mapVowelTehtarForWideTengwar = CharMaps.initVowelTehtarForWideTengwarMap();
 
         StringBuilder result = new StringBuilder();
         char[] tengwarCharArray = tengwarText.toCharArray();

@@ -2,8 +2,6 @@ package org.example;
 
 import java.util.Map;
 
-import static org.example.Charsets.*;
-
 public class EngTextMethods {
 
 //    public static String revertVowels(String inputText) { //strip diacritics from letters
@@ -33,7 +31,7 @@ public class EngTextMethods {
 
     //once the digraphs have been matched to their tengwar, proceed to transliterate the individual chars that are left
     public static String translWordCharsSimple(String inputWord) {
-        Map<Character, String> singleCharsMap = initSingleCharsMap();
+        Map<Character, String> singleCharsMap = CharMaps.initSingleCharsMap();
         char[] inputCharArr = inputWord.toCharArray();
         StringBuilder outputWord = new StringBuilder();
         boolean comingCharIsMapped = false;

@@ -92,8 +92,24 @@ public class TgwTehtarTextMethods {
 
     }
 
-    public static String putTehtarOnSucceedingTengwar() { //TODO
+    /*public static String putTehtarOnSucceedingTengwar(String inputText) { //TODO
         //gonna need the big algo for this? [en]"nt" is [tg]"1p", that is, "tn" so i guess we can just look for the [en]"t" or [tg]"1" and skip the 'n'
+        char[] inputChars = inputText.toCharArray();
+        char cFirst = inputChars[0];
+        char cScnd = inputChars[1];
+
+        for (int i = 2; i < inputChars.length; i++) {
+            char cFirst = inputChars[i - 2];
+            char cScnd = inputChars[i - 1];
+            char cThrd = inputChars[i];
+
+
+        }
+        return "";
+    }*/
+
+    public static String adjustCorrectTehtaForPrecedingTengwa(){
+
         return "";
     }
 }
