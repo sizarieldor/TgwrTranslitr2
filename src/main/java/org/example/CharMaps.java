@@ -41,7 +41,7 @@ public class CharMaps {
         singleCharsMap.put(',', " =");
         singleCharsMap.put('-', "\\");
         singleCharsMap.put('–', "Â");
-        singleCharsMap.put('\'', "B");
+        singleCharsMap.put('\'', "="); //' a.k.a. apostrophe, it used to be marked with an upper dot (keyboard B), which was unreadable
         singleCharsMap.put('!', " Á");
         singleCharsMap.put('?', " À");
         singleCharsMap.put(';', " Ã");

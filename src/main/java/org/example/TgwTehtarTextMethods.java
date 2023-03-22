@@ -6,18 +6,15 @@ import javax.xml.stream.events.StartDocument;
 import java.util.Set;
 
 public class TgwTehtarTextMethods {
+    //StringUtils.replaceEach() takes as arguments one long string and two arrays of substrings
+    //the method takes every instance of all elements of the first array and replaces it with the corresponding element from the second array
+    //thus, all instances of "`C1" (element #1 from rawChars) will be replaced with  "1E"
+    //the replacement is simultaneous, which is necessary to avoid bugs
+
     public static String tehtarizeVowels(String inputText) {
         //these replacements must be done simulateneously, not one after another, hence the use of StringUtils.replaceEach()
         String[] rawChars = new String[]{"]", "l", "`", "h", ".", "i"};
         String[] fixedChars = new String[]{"`C", "`V", "`B", "`N", "`M", "`×"};
-        //        return inputText
-//                .replace("]","`C")//a
-//                .replace("l","`V")//e
-//                .replace("`","`B")//i
-//                .replace("h","`N")//o
-//                .replace(".","`M")//u
-//                .replace("i","`×")//y
-//                ;
         return StringUtils.replaceEach(inputText, rawChars, fixedChars);
     }
 
@@ -93,43 +90,13 @@ public class TgwTehtarTextMethods {
                 .replace("`×`×", "~×")//yy
                 ;*/
         return StringUtils.replaceEach(inputText, rawChars, fixedChars);
-
-    }
-
-    public static String desiSwapTehtar(String input) {
-        Set<Character> vowelTehtarOnCarrierSet = Charsets.initVowelTehtaOnCarrierSet();
-        StringBuilder result = new StringBuilder();
-        String[] inputAsStrings = input.split("`");
-        for (String inputSplitElement : inputAsStrings) {
-            if (!inputSplitElement.equals("")) { //necessary check, sometimes .split() creates an empty string, which then causes an error
-                char firstChar = inputSplitElement.charAt(0);
-
-                //check for valid first char
-                boolean stringStartsWithVowelTehta = false;
-                if (vowelTehtarOnCarrierSet.contains(firstChar)) {
-                    stringStartsWithVowelTehta = true;
-                }
-
-                if (stringStartsWithVowelTehta && inputSplitElement.length() > 1) { //if valid 1st char AND if the snippet is 2 or more chars long
-                    char[] splitElementArr = inputSplitElement.toCharArray();
-                    char temp = splitElementArr[0];
-                    splitElementArr[0] = splitElementArr[1];
-                    splitElementArr[1] = temp;
-                    result.append(splitElementArr); //need to use .toString()?
-                } else {
-                    result.append(inputSplitElement);
-                }
-            }
-        }
-        return result.toString();
-    }
-
-    public static String adjustCorrectTehtaForPrecedingTengwa(){
-
-        return "";
     }
 
     public static String putTehtarOnSucceedingTengwar(String inputText) {
+        //this method has quite a few lines, because the arrays were generated in the Chars Map Workbook.xlsx
+        //it is the most foolproof way to put the vowel doodles (tehtar) in their right positions in the text
+        //an algorithm that iterates over the chars is too difficult to write
+        //plus, using the spreadsheet allows for very easy adjustments in style
         String[] rawChars = new String[]{
                 "`C1",
                 "`C!",

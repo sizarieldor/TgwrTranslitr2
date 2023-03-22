@@ -104,10 +104,11 @@ public class MainFrame {
             output = TgwTextMethods.fixDoubleConsonants(output);
             output = TgwTehtarTextMethods.tehtarizeVowels(output);
             output = TgwTehtarTextMethods.fixDiphtongs(output);
+            output = TgwTextMethods.fixFinalNGs(output);
             output = TgwTehtarTextMethods.putTehtarOnSucceedingTengwar(output);
+            //put final Ss
         }
-//        output = TgwTextMethods.
-//        output = TgwTextMethods.fixFinalNGs(output); //TODO
+
         return output;
     }
     private Font generateTengwarFont() {

@@ -10,8 +10,9 @@ public class EngTextMethods {
 
     //use this to transliterate the following digraphs into their corresponding tengwar
     public static String translWordDigraphsSimple(String inputWord) {
+        //this method uses two obscure chars to mark digraphs
         String outputWord = inputWord
-                .replaceAll("dh", "4")
+                .replaceAll("dh", "4") //TODO check
                 .replaceAll("dh", "┤4╡") //Alt + 180, Alt + 181
                 .replaceAll("ch", "┤a╡")
                 .replaceAll("gh", "┤v╡")
@@ -34,21 +35,26 @@ public class EngTextMethods {
         Map<Character, String> singleCharsMap = CharMaps.initSingleCharsMap();
         char[] inputCharArr = inputWord.toCharArray();
         StringBuilder outputWord = new StringBuilder();
+
         boolean comingCharIsMapped = false;
         for (int i = 0; i < inputCharArr.length; i++) {
             char c = inputCharArr[i];
+
             if (c == '┤') {
                 comingCharIsMapped = true;
+
             } else if (c != '╡') {
                 if (comingCharIsMapped) {
                     outputWord.append(c);
                     comingCharIsMapped = false;
+
                 } else { //next char is not
                     if (singleCharsMap.containsKey(c)) {
                         outputWord.append(singleCharsMap.get(c));
                     } else {
                         outputWord.append('-');
                     }
+
                     comingCharIsMapped = false;
                 }
             }
@@ -56,5 +62,6 @@ public class EngTextMethods {
         return outputWord.toString();
     }
 
-    //the program now has a string of pure tengwar runes, upon which the rules for doubling and all the rest may be applied
+    // all the latin-alphabet text is processed;
+    // the program now has a string of pure tengwar runes, upon which the rules for doubling and all the rest may be applied
 }

@@ -14,14 +14,23 @@ public class Main {
     public static void main(String[] args) {
         MainFrame frame = new MainFrame();
         Scanner sc = new Scanner(System.in);
-//        ConsoleTest();
-//
 //        String input = sc.nextLine();
-//        String output = desiTest(input);
+
+        //        ConsoleTest();
+
+        //        String output = desiTest(input);
+//        String output = replaceFinalNGs(input);
+
 //        System.out.println(output);
 //        System.out.println("");
     }
 
+    private static String replaceFinalNGs(String inputText) {
+        String result = inputText.replaceAll("ng\\b", "YY")
+                .replaceAll("ngs\\b", "YYS");
+
+        return result;
+    }
 
     private static void ConsoleTest() {
         Scanner sc = new Scanner(System.in);
