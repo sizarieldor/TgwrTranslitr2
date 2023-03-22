@@ -104,6 +104,7 @@ public class MainFrame {
             output = TgwTextMethods.fixDoubleConsonants(output);
             output = TgwTehtarTextMethods.tehtarizeVowels(output);
             output = TgwTehtarTextMethods.fixDiphtongs(output);
+            output = TgwTehtarTextMethods.putTehtarOnSucceedingTengwar(output);
         }
 //        output = TgwTextMethods.
 //        output = TgwTextMethods.fixFinalNGs(output); //TODO

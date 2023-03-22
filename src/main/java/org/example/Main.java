@@ -12,14 +12,15 @@ import java.util.*;
 //3. adjust nasals, double consonants, tehtar,
 public class Main {
     public static void main(String[] args) {
-//        MainFrame frame = new MainFrame();
+        MainFrame frame = new MainFrame();
         Scanner sc = new Scanner(System.in);
 //        ConsoleTest();
-        String input = sc.nextLine();
-        String output = desiTest(input);
-        System.out.println(output);
+//
+//        String input = sc.nextLine();
+//        String output = desiTest(input);
+//        System.out.println(output);
+//        System.out.println("");
     }
-
 
 
     private static void ConsoleTest() {
@@ -45,7 +46,7 @@ public class Main {
             if (vowels.contains(c)) {
                 //store C for later
                 storedVowelQueue.push(c);
-            } else if (!storedVowelQueue.isEmpty()){
+            } else if (!storedVowelQueue.isEmpty()) {
                 char thisV = storedVowelQueue.pop();
                 result.append(c);
                 result.append(thisV);
@@ -57,8 +58,9 @@ public class Main {
     }
 
 
-    //n~Vr`Bj `VA1V76`Cj
-    //n~VrjB AV17V6jC
+    //n~Vr`Bj `VA1V76`Cj -> n~VrjB AV17V6jC
+    //`C5.Nzp`V
+    //n'V'B72 ->    = 'weird', only 'B should be swapped
     public static String putTehtarOnSucceedingTengwar(String inputText) {
         //initVowelTehtaOnCarrierSet, initVowelTehtaOnWideTengwaSet, initVowelTehtaOnNarrowTengwaSet
         Set<Character> vowelTehtarOnCarrierSet = Charsets.initVowelTehtaOnCarrierSet();
@@ -70,9 +72,8 @@ public class Main {
         StringBuilder result = new StringBuilder();
 
 
-
         for (int i = 1; i < inputChars.length; i++) {
-            char cFirst = inputChars[i-1];
+            char cFirst = inputChars[i - 1];
             char cSecnd = inputChars[i];
 
             if (cFirst == '`' && vowelTehtarOnCarrierSet.contains(cSecnd)) {
@@ -99,28 +100,30 @@ public class Main {
     }
 
     public static String desiTest(String input) {
+        //TODO words ending in a vowel, the carrier needs to be preserved
         Set<Character> vowelTehtarOnCarrierSet = Charsets.initVowelTehtaOnCarrierSet();
         StringBuilder result = new StringBuilder();
         String[] inputAsStrings = input.split("`");
         for (String inputSplitElement : inputAsStrings) {
-            char firstChar = inputSplitElement.charAt(0);
+            if (!inputSplitElement.equals("")) { //necessary check, sometimes .split() creates an empty string, which then causes an error
+                char firstChar = inputSplitElement.charAt(0);
 
-            //check for valid first char
-            boolean stringStartsWithVowelTehta = false;
-            if (vowelTehtarOnCarrierSet.contains(firstChar)) {
-                stringStartsWithVowelTehta = true;
+                //check for valid first char
+                boolean stringStartsWithVowelTehta = false;
+                if (vowelTehtarOnCarrierSet.contains(firstChar)) {
+                    stringStartsWithVowelTehta = true;
+                }
+
+                if (stringStartsWithVowelTehta && inputSplitElement.length() > 1) { //if valid 1st char AND if the snippet is 2 or more chars long
+                    char[] splitElementArr = inputSplitElement.toCharArray();
+                    char temp = splitElementArr[0];
+                    splitElementArr[0] = splitElementArr[1];
+                    splitElementArr[1] = temp;
+                    result.append(splitElementArr); //need to use .toString()?
+                } else {
+                    result.append(inputSplitElement);
+                }
             }
-
-            if (stringStartsWithVowelTehta) { //TODO 'A' tehta on top of a short carrier, as a separate word 'a'?
-                char[] splitElementArr = inputSplitElement.toCharArray();
-                char temp = splitElementArr[0];
-                splitElementArr[0] = splitElementArr[1];
-                splitElementArr[1] = temp;
-                result.append(splitElementArr); //need to use .toString()?
-            } else {
-                result.append(inputSplitElement);
-            }
-
         }
         return result.toString();
     }
