@@ -1,8 +1,9 @@
 package org.example;
 
+import org.example.Engine.Charsets;
+import org.example.Engine.EngTextMethods;
 import org.example.gui.MainFrame;
 
-import java.nio.charset.Charset;
 import java.util.*;
 
 //1. how to avoid losing digraphs - wrap in symbols
@@ -28,7 +29,6 @@ public class Main {
     private static String replaceFinalNGs(String inputText) {
         String result = inputText.replaceAll("ng\\b", "YY")
                 .replaceAll("ngs\\b", "YYS");
-
         return result;
     }
 

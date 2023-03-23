@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Engine;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -6,6 +6,8 @@ import javax.xml.stream.events.StartDocument;
 import java.util.Set;
 
 public class TgwTehtarTextMethods {
+    //Here are the methods that work with the tehtar (the vowels)
+
     //StringUtils.replaceEach() takes as arguments one long string and two arrays of substrings
     //the method takes every instance of all elements of the first array and replaces it with the corresponding element from the second array
     //thus, all instances of "`C1" (element #1 from rawChars) will be replaced with  "1E"
@@ -18,7 +20,10 @@ public class TgwTehtarTextMethods {
         return StringUtils.replaceEach(inputText, rawChars, fixedChars);
     }
 
-    public static String fixDiphtongs(String inputText) { //technically, any two vowels next to each other
+    public static String fixDiphtongs(String inputText) {
+        //technically, any two vowels next to each other
+        //this does not follow the dihptong rules in the Tengwar guides on the internet
+        //this just creates diphtongs in a systematic manner
         /*
         aa ea ia oa ua ya
         ae ee ie oe ue ye
@@ -57,46 +62,16 @@ public class TgwTehtarTextMethods {
                 "~B", "~×",
 
         };
-       /* return inputText
-                .replace("`C`C", "~C")//long carrier + tehta; aa
-                .replace("`V`C", "]R")//hardcoded ea
-                .replace("`B`C", "]T")//hardcoded ia
-                .replace("`N`C", "]N")//hardcoded oa
-                .replace("`M`C", "]J")//hardcoded ua
-                .replace("`×`C", "]Õ")//hardcoded ya
 
-                .replace("`C`V", "lE")//hardcoded ae
-                .replace("`V`V", "~V")//ee
-                .replace("`B`V", "lT")//hardcoded ie
-                .replace("`N`V", "lN")//hardcoded oe
-                .replace("`M`V", "lJ")//hardcoded ue
-                .replace("`×`V", "lÕ")//hardcoded ye
-
-                .replace("`C`N", "hE")//hardcoded ao
-                .replace("`V`N", "hR")//hardcoded eo
-                .replace("`B`N", "hT")//hardcoded io
-                .replace("`N`N", "~N")//oo
-                .replace("`M`N", "hJ")//hardcoded uo
-                .replace("`×`N", "hÕ")//hardcoded yo
-
-                .replace("`C`M", ".E")//hardcoded au
-                .replace("`B`M", ".T")//hardcoded iu
-                .replace("`V`M", ".R")//hardcoded eu
-                .replace("`N`M", ".N")//hardcoded ou
-                .replace("`M`M", "~M")//uu
-                .replace("`×`M", ".Õ")//hardcoded yu
-
-                .replace("`B`B", "~B")//ii
-                .replace("`×`×", "~×")//yy
-                ;*/
         return StringUtils.replaceEach(inputText, rawChars, fixedChars);
     }
 
     public static String putTehtarOnSucceedingTengwar(String inputText) {
         //this method has quite a few lines, because the arrays were generated in the Chars Map Workbook.xlsx
         //it is the most foolproof way to put the vowel doodles (tehtar) in their right positions in the text
-        //an algorithm that iterates over the chars is too difficult to write
+        //an algorithm that iterates over the chars, at this point in the transliteration process, is too difficult to write and requires too many checks
         //plus, using the spreadsheet allows for very easy adjustments in style
+        //TODO consistent 'e' tehtar, must have same angle
         String[] rawChars = new String[]{
                 "`C1",
                 "`C!",

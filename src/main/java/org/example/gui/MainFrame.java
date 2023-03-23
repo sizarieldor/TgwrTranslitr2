@@ -1,8 +1,9 @@
 package org.example.gui;
 
-import org.example.EngTextMethods;
-import org.example.TgwTehtarTextMethods;
-import org.example.TgwTextMethods;
+import org.example.Engine.EngTextMethods;
+import org.example.Engine.Constants;
+import org.example.Engine.TgwTehtarTextMethods;
+import org.example.Engine.TgwTextMethods;
 import org.example.TengwarMode;
 
 import javax.swing.*;
@@ -27,8 +28,6 @@ public class MainFrame {
     private final int BUTTON_WIDTH = 220;
     private final int BUTTON_HEIGHT = 60;
     private final int PICKER_HEIGHT = 30;
-    private static final String PICKER_MODE_AUTHOR_FULL = "Full mode by author";
-    private static final String PICKER_MODE_AUTHOR_OMATEHTA = "Ómatehta by author";
 
 
     //    private final int padding = 20;
@@ -60,7 +59,7 @@ public class MainFrame {
         outputLabel2.setVerticalAlignment(SwingConstants.TOP);
         frame.add(outputLabel2);
 
-        String[] inputModes = {PICKER_MODE_AUTHOR_OMATEHTA, PICKER_MODE_AUTHOR_FULL};
+        String[] inputModes = {Constants.PICKER_MODE_AUTHOR_OMATEHTA, Constants.PICKER_MODE_AUTHOR_FULL};
         modePicker = new JComboBox<>(inputModes);
         modePicker.setBounds(PADDING, PADDING + OUTPUT_HEIGHT + PADDING, BUTTON_WIDTH, PICKER_HEIGHT);
         frame.add(modePicker);
@@ -93,13 +92,15 @@ public class MainFrame {
     }
 
     private String performTranslitSequence(String input, String pickedMode) {
-        String output = EngTextMethods.translWordDigraphsSimple(input);
+        String output;
+        output = EngTextMethods.stripDiacritics(input);
+        output = EngTextMethods.translWordDigraphsSimple(output);
         output = EngTextMethods.translWordCharsSimple(output);
         output = TgwTextMethods.fixOfThes(output);
-        if (pickedMode.equals(PICKER_MODE_AUTHOR_FULL)) {
-            
+        if (pickedMode.equals(Constants.PICKER_MODE_AUTHOR_FULL)) {
+            output = TgwTextMethods.fixDoubleConsonants(output);
             output = TgwTextMethods.putDotsForFullMode(output);
-        } else if (pickedMode.equals(PICKER_MODE_AUTHOR_OMATEHTA)) {
+        } else if (pickedMode.equals(Constants.PICKER_MODE_AUTHOR_OMATEHTA)) {
             output = TgwTextMethods.fixNasals(output);
             output = TgwTextMethods.fixDoubleConsonants(output);
             output = TgwTehtarTextMethods.tehtarizeVowels(output);

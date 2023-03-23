@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Engine;
 
 import java.util.*;
 
@@ -6,7 +6,7 @@ public class Charsets {
 
 
     //set of those latin chars that couple with 'h' to form digraphs - 'C'->'CH','D'->'DH','S'->'SH', etc.
-    static Set<Character> initFormingHDigraphEngCharsSet() {
+    public static Set<Character> initFormingHDigraphEngCharsSet() {
         Set<Character> engLettersCouplingWithH = new HashSet<>();
         engLettersCouplingWithH.add('c');
         engLettersCouplingWithH.add('d');
@@ -23,7 +23,7 @@ public class Charsets {
     }
 
     //set of latin chars that represent vowels - 'A', 'O', etc
-    static Set<Character> initVowelEngCharsSet() {
+    public static Set<Character> initVowelEngCharsSet() {
         Set<Character> charsThatAreVowels = new HashSet<>();
         charsThatAreVowels.add('a');
         charsThatAreVowels.add('o');
@@ -34,7 +34,7 @@ public class Charsets {
     }
 
     //set of latin chars that form nasals after 'N' or 'M' when in tengwar
-    static Set<Character> initPostnasalEngCharsSet() {
+    public static Set<Character> initPostnasalEngCharsSet() {
         Set<Character> chars = new HashSet<>();
         chars.add('b'); //b
         chars.add('c'); //c/k/q
@@ -51,7 +51,7 @@ public class Charsets {
     }
 
     //set of tengwar chars that form nasals after 'N' or 'M'
-    static Set<Character> initPostnasalTengwarSet() {
+    public static Set<Character> initPostnasalTengwarSet() {
         Set<Character> tengwarNasalisable = new HashSet<>();
         tengwarNasalisable.add('w'); //b
         tengwarNasalisable.add('z'); //c/k/q
@@ -66,7 +66,7 @@ public class Charsets {
     }
 
     //set of tengwar chars that are narrow (usu. have a single Lúva) and therefore require narrow tehtar
-    static Set<Character> initNarrowTengwarSet() {
+    public static Set<Character> initNarrowTengwarSet() {
         Set<Character> narrowTengwar = new HashSet<>(); //in the Annatar font, these consonant characters appear narrow
         narrowTengwar.add('z');
         narrowTengwar.add('e');
@@ -87,7 +87,7 @@ public class Charsets {
     }
 
     //set of tengwar chars that are wide (usu. have double Lúvar) and therefore require broad tehtar
-    static Set<Character> initWideTengwarSet() { //
+    public static Set<Character> initWideTengwarSet() { //
         Set<Character> wideTengwar = new HashSet<>(); //in the Annatar font, these consonant characters appear wide
         wideTengwar.add('w');
         wideTengwar.add('2');
@@ -106,7 +106,7 @@ public class Charsets {
     }
 
     //set of tengwar chars that represent vowels in the Mode of Beleriand
-    static Set<Character> initVowelTengwarSet() {
+    public static Set<Character> initVowelTengwarSet() {
         Set<Character> vowelTengwar = new HashSet<>(); //in the Annatar font, these keys on the alphabet map to the Tengwar vowels in full mode
         vowelTengwar.add(']'); //a
         vowelTengwar.add('l'); //e
@@ -118,7 +118,7 @@ public class Charsets {
     }
 
     //set of tengwar consonant chars that are narrow: require left-offset vowel tehtar
-    static Set<Character> initVowelCarryingNarrowTengwarSet() {
+    public static Set<Character> initVowelCarryingNarrowTengwarSet() {
         Set<Character> narrowTengwar = new HashSet<>(); //in the Annatar font, these characters appear narrow
         narrowTengwar.add('1');
         narrowTengwar.add('q');
@@ -145,7 +145,7 @@ public class Charsets {
     }
 
     //set of tengwar consonant that are wide: require right-offset vowel tehtar
-    static Set<Character> initVowelCarryingWideTengwarSet() { //
+    public static Set<Character> initVowelCarryingWideTengwarSet() { //
         Set<Character> wideTengwar = new HashSet<>(); //in the Annatar font, these characters appear wide
         wideTengwar.add('2');
         wideTengwar.add('w');
@@ -164,7 +164,7 @@ public class Charsets {
         return wideTengwar;
     }
 
-    static Set<Character> initVowelTehtaOnNarrowTengwaSet() {
+    public static Set<Character> initVowelTehtaOnNarrowTengwaSet() {
         Set<Character> tehtarForNarrowTengwar = new HashSet<>();
         tehtarForNarrowTengwar.add('E'); //a
         tehtarForNarrowTengwar.add('R'); //e
@@ -175,7 +175,7 @@ public class Charsets {
         return tehtarForNarrowTengwar;
     }
 
-    static Set<Character> initVowelTehtaOnWideTengwaSet() {
+    public static Set<Character> initVowelTehtaOnWideTengwaSet() {
         Set<Character> tehtarForWideTengwar = new HashSet<>();
         tehtarForWideTengwar.add('#'); //a
         tehtarForWideTengwar.add('$'); //e
@@ -186,7 +186,7 @@ public class Charsets {
         return tehtarForWideTengwar;
     }
 
-    static Set<Character> initVowelTehtaOnCarrierSet() {
+    public static Set<Character> initVowelTehtaOnCarrierSet() {
         Set<Character> tehtarForCarrier = new HashSet<>();
         tehtarForCarrier.add('C'); //a
         tehtarForCarrier.add('V'); //e
