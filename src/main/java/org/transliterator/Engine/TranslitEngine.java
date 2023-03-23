@@ -1,4 +1,4 @@
-package org.example.Engine;
+package org.transliterator.Engine;
 
 public class TranslitEngine {
     //This class manages the transliteration process
@@ -16,6 +16,7 @@ public class TranslitEngine {
             case (Constants.PICKER_MODE_AUTHOR_FULL):
                 output = TgwTextMethods.fixDoubleConsonants(output);
                 output = TgwTextMethods.putDotsForFullMode(output);
+                output = TgwTextMethods.fixFinalNGs(output);
                 break;
 
             case (Constants.PICKER_MODE_AUTHOR_OMATEHTA):
@@ -28,6 +29,8 @@ public class TranslitEngine {
                 //put final Ss
                 break;
         }
+
+        output = TgwTextMethods.applyFinalAdjustments(output);
 
         return output;
     }

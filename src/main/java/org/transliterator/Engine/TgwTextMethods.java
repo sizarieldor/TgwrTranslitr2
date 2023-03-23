@@ -1,4 +1,4 @@
-package org.example.Engine;
+package org.transliterator.Engine;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -40,8 +40,15 @@ public class TgwTextMethods {
                 .replaceAll("xP8\\b", "b_ ");
     }
 
-    /*public static String fixFinalSs(String inputText) { //TODO format the terminal 's' tengwar for stylistic purposes
+/*    public static String fixFinalSs(String inputText) { //TODO format the terminal 's' tengwar for stylistic purposes; is this even necessary?
         //do a regex for every consonant-vowel-S
-        return inputText.replaceAll("")
+//        return inputText.replaceAll("")
+        return "";
     }*/
+
+    public static String applyFinalAdjustments(String inputText) {
+        //this method is for making small corrections that would be inconvenient to perform earlier in the program
+        //replace the placeholder for 'x': 'A'
+        return inputText.replaceAll("A", "z|");
+    }
 }

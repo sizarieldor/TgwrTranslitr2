@@ -1,6 +1,6 @@
-package org.example.gui;
+package org.transliterator.gui;
 
-import org.example.Engine.*;
+import org.transliterator.Engine.*;
 
 import javax.swing.*;
 import java.awt.*;

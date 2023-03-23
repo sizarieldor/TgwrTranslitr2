@@ -1,8 +1,6 @@
-package org.example;
+package org.transliterator;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class TgwTehtarTextMethodsTest {
 

@@ -1,6 +1,6 @@
-package org.example;
+package org.transliterator;
 
-import org.example.gui.MainFrame;
+import org.transliterator.gui.MainFrame;
 
 public class Main {
     //For an introduction to the subject, see http://at.mansbjorkman.net/tengwar.htm
@@ -9,7 +9,6 @@ public class Main {
         MainFrame frame = new MainFrame();
 //        Scanner sc = new Scanner(System.in);
 //        String input = sc.nextLine();
-
 //        System.out.println(output);
     }
 
