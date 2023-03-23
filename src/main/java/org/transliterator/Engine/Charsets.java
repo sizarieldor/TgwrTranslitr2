@@ -3,7 +3,8 @@ package org.transliterator.Engine;
 import java.util.*;
 
 public class Charsets {
-
+    //This class was used to guide the algorithms that reconstruct the raw tengwar text and put the right runes in the right places
+    //Those algorithms were too cumbersome, so this entire class is now made obsolete
 
     //set of those latin chars that couple with 'h' to form digraphs - 'C'->'CH','D'->'DH','S'->'SH', etc.
     public static Set<Character> initFormingHDigraphEngCharsSet() {

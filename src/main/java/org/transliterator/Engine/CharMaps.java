@@ -33,11 +33,11 @@ public class CharMaps {
         singleCharsMap.put('u', ".");
         singleCharsMap.put('v', "r");
         singleCharsMap.put('w', "n");
-        singleCharsMap.put('x', "A"); //placeholder
+        singleCharsMap.put('x', "A"); //placeholder, this is removed in the .applyFinalAdjustments() method
         singleCharsMap.put('y', "i");
         singleCharsMap.put('z', "k");
         singleCharsMap.put(' ', " "); // ?
-        singleCharsMap.put('.', " =-="); //NB space in front of the punctuation, to enable the of/the/ofthe method to work accurately; TODO remove these spaces?
+        singleCharsMap.put('.', " =-="); //NB space in front of the punctuation, to enable the of/the/ofthe method to work accurately; TODO remove these spaces? That would require regex in the of/the method
         singleCharsMap.put(',', " =");
         singleCharsMap.put('-', "\\");
         singleCharsMap.put('–', "Â");
