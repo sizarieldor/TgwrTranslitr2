@@ -554,7 +554,7 @@ public class TgwTehtarTextMethods {
                 "QÖ",
                 "aÕ",
                 "AÕ",
-                "zÕ",
+                "zÕ", //imagine getting paid by the line
                 "ZÕ",
                 "2Ô",
                 "@Ô",

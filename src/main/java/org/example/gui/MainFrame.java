@@ -1,10 +1,6 @@
 package org.example.gui;
 
-import org.example.Engine.EngTextMethods;
-import org.example.Engine.Constants;
-import org.example.Engine.TgwTehtarTextMethods;
-import org.example.Engine.TgwTextMethods;
-import org.example.TengwarMode;
+import org.example.Engine.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +10,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class MainFrame {
-    private TengwarMode tengwarMode;
     JFrame frame;
     JButton goButton;
     JTextArea inputArea;
@@ -32,7 +27,6 @@ public class MainFrame {
 
     //    private final int padding = 20;
     public MainFrame() {
-        tengwarMode = TengwarMode.FULLMODE_AUTHOR;
         frame = new JFrame("Tengwar transliterator");
         frame.setSize(600, 600);
         frame.setLayout(null);
@@ -70,48 +64,25 @@ public class MainFrame {
         goButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //get mode
+                //load the user input
                 String input = inputArea.getText().toLowerCase();
+
+                //note the chosen mode
                 String pickedMode = modePicker.getItemAt(modePicker.getSelectedIndex());
-                String transliteratedOutput = performTranslitSequence(input, pickedMode);
+
+                //call the engine to do the work
+                String transliteratedOutput = TranslitEngine.transliterateText(input, pickedMode);
+
+                //print result on the gui
                 String formattedOutput = String.format(html, 200, transliteratedOutput);
                 outputLabel.setText(formattedOutput);
                 outputLabel2.setText(formattedOutput);
-                /*if (modePicker.getItemAt(modePicker.getSelectedIndex()).equals(PICKER_MODE_AUTHOR_OMATEHTA)) {
-//                    tengwarMode = TengwarMode.OMATEHTA_AUTHOR;
-                } else if (modePicker.getItemAt(modePicker.getSelectedIndex()).equals(PICKER_MODE_AUTHOR_FULL)) {
-//                    tengwarMode = TengwarMode.FULLMODE_AUTHOR;
-                    String formattedOutput = String.format(html, 200, performTranslitSequence(input));
-                    outputLabel.setText(formattedOutput);
-                    outputLabel2.setText(formattedOutput);
-                }*/
             }
         });
 
         frame.setVisible(true);
     }
 
-    private String performTranslitSequence(String input, String pickedMode) {
-        String output;
-        output = EngTextMethods.stripDiacritics(input);
-        output = EngTextMethods.translWordDigraphsSimple(output);
-        output = EngTextMethods.translWordCharsSimple(output);
-        output = TgwTextMethods.fixOfThes(output);
-        if (pickedMode.equals(Constants.PICKER_MODE_AUTHOR_FULL)) {
-            output = TgwTextMethods.fixDoubleConsonants(output);
-            output = TgwTextMethods.putDotsForFullMode(output);
-        } else if (pickedMode.equals(Constants.PICKER_MODE_AUTHOR_OMATEHTA)) {
-            output = TgwTextMethods.fixNasals(output);
-            output = TgwTextMethods.fixDoubleConsonants(output);
-            output = TgwTehtarTextMethods.tehtarizeVowels(output);
-            output = TgwTehtarTextMethods.fixDiphtongs(output);
-            output = TgwTextMethods.fixFinalNGs(output);
-            output = TgwTehtarTextMethods.putTehtarOnSucceedingTengwar(output);
-            //put final Ss
-        }
-
-        return output;
-    }
     private Font generateTengwarFont() {
         String path = "src\\main\\fonts\\tngan.ttf";
         File tengwarFontFile = new File(path);
