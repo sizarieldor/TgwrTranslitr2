@@ -1,4 +1,4 @@
-package org.transliterator.Engine;
+package org.transliterator.GUI;
 
 public class Constants {
     public static final String PICKER_MODE_AUTHOR_FULL = "Full mode by author";

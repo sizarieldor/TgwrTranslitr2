@@ -1,5 +1,7 @@
 package org.transliterator.Engine;
 
+import org.transliterator.GUI.Constants;
+
 public class TranslitEngine {
     //This class manages the transliteration process
     //If I have free time, I might add more variations of the transliteration process
