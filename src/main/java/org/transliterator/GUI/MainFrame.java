@@ -1,4 +1,4 @@
-package org.transliterator.gui;
+package org.transliterator.GUI;
 
 import org.transliterator.Engine.*;
 

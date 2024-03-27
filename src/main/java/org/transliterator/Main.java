@@ -1,6 +1,6 @@
 package org.transliterator;
 
-import org.transliterator.gui.MainFrame;
+import org.transliterator.GUI.MainFrame;
 
 public class Main {
     //For an introduction to the subject, see http://at.mansbjorkman.net/tengwar.htm
