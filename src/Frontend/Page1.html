@@ -3,8 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Tengwar Transliterator</title>
+<!--        <style>-->
+<!--            body {background-color: powderblue;}-->
+<!--            p {color:red}-->
+<!--            .mycontainer {display:flex;}-->
+<!--            .mycontainer> div {width:33%;}-->
+<!--        </style>-->
+
+    <style>
+.mycontainer {
+  display: grid;
+  grid-template-columns: 45% 10% 45%;
+}
+
+    </style>
+
 </head>
 <body>
-<div></div>
+Text outside paragraph.
+<div><h1>This is heading 1</h1> Text inside div.</div>
+Text after div.
+
+<div class="mycontainer">
+
+    <div id="divEnglishInput">
+        <h2 style="color:blue;">Text box for english</h2>
+        <p>input text in English</p>
+        <label for="englishInput">English Input goes here</label><br> <!-- <br> is necessary here -->
+        <textarea id="englishInput" name="englishInput" rows="10" cols="50">text in textarea</textarea>
+    </div>
+
+    <div id="divBtnPerform">
+        <input type="button" id="btnPerform" name="button_perform" value="Transliterate">
+    </div>
+
+    <div id="divResultTextbox">
+        <h2>Result text box for tgw</h2>
+        <p>output text here</p>
+        <label id="lblOutput">asdfsadf</label>
+    </div>
+</div>
 </body>
 </html>
+<!-- TODO
+textarea
+
+-->
