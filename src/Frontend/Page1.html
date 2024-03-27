@@ -10,24 +10,27 @@
     <!--            .mycontainer> div {width:33%;}-->
     <!--        </style>-->
 
-    <style>
-    .page{
+<style>
+.page{
     border: 1px solid;
-padding: 5px;
-margin-top: 12px;
-min-height: 50px;
-position-relative;
-    }
+    padding: 5px;
+    margin-top: 12px;
+    min-height: 50px;
+    position-relative;
+}
 .my-container {
   display: grid;
   grid-template-columns: 45% 10% 45%;
 }
 
+.buttonarea {
+    vertical-align:middle;
+}
 
-    </style>
+</style>
 
 </head>
-<body>
+<body class="page">
 Text outside paragraph.
 <div><h1>This is heading 1</h1> Text inside div.</div>
 Text after div.
@@ -35,13 +38,15 @@ Text after div.
 <div class="my-container">
 
     <div id="divEnglishInput" style="border:2px solid Tomato" ;>
+        <form>
+            <!-- TODO metohd -->
+        </form>
         <h2 style="color:blue;">Text box for english</h2>
-        <p>input text in English</p>
         <label for="englishInput">English Input goes here</label><br> <!-- <br> is necessary here -->
-        <textarea id="englishInput" name="englishInput" rows="10" cols="50">text in textarea</textarea>
+        <textarea id="englishInput" name="englishInput" rows="10" cols="50" maxlength="2000"></textarea>
     </div>
 
-    <div id="divBtnPerform" style="border:2px solid Violet">
+    <div class="buttonarea" id="divBtnPerform" style="border:2px solid Violet">
         <input type="button" id="btnPerform" name="button_perform" value="Transliterate">
     </div>
 
@@ -53,7 +58,3 @@ Text after div.
 </div>
 </body>
 </html>
-<!-- TODO
-textarea
-
--->
