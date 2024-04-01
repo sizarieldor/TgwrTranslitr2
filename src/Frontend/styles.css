@@ -1,7 +1,48 @@
+@font-face {
+    font-family: "Tengwar";
+    src: url('tngan.ttf') format('truetype');
+}
+
 .page {
 border: 1px solid;
 padding: 5px;
 margin-top: 12px;
 min-height: 50px;
 position-relative;
+}
+
+body {
+  background:lightgrey;
+  margin: 10;
+}
+
+.page{
+    border: 1px solid;
+    padding: 5px;
+    margin-top: 12px;
+    min-height: 50px;
+    position-relative;
+}
+.my-container {
+  display: grid;
+  grid-template-columns: 45% 10% 45%;
+}
+
+.buttonarea {
+    vertical-align:middle;
+}
+
+.textbox {
+    padding: 5px;
+}
+
+.textSection{
+    padding: 5px;
+    border:2px solid Tomato;
+}
+
+.outputSection{
+    padding: 5px;
+    border:2px solid Green;
+    font-family: "Tengwar", Calibri, Tahoma
 }

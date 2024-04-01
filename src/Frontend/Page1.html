@@ -2,37 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Tengwar Transliterator</title>
-    <!--        <style>-->
-    <!--            body {background-color: powderblue;}-->
-    <!--            p {color:red}-->
-    <!--            .mycontainer {display:flex;}-->
-    <!--            .mycontainer> div {width:33%;}-->
-    <!--        </style>-->
+    <link href="styles.css" rel="stylesheet"/>
 
-<style>
-
-body {
-  background:lightgrey;
-}
-
-.page{
-    border: 1px solid;
-    padding: 5px;
-    margin-top: 12px;
-    min-height: 50px;
-    position-relative;
-}
-.my-container {
-  display: grid;
-  grid-template-columns: 45% 10% 45%;
-}
-
-.buttonarea {
-    vertical-align:middle;
-}
-
-</style>
 
 </head>
 <body class="page">
@@ -42,20 +15,20 @@ Text after div.
 
 <div class="my-container">
 
-    <div id="divEnglishInput" style="border:2px solid Tomato" ;>
+    <div class="textSection" id="divEnglishInput" ;>
         <form>
             <!-- TODO metohd -->
         </form>
         <h2 style="color:blue;">Text box for english</h2>
         <label for="englishInput">English Input goes here</label><br> <!-- <br> is necessary here -->
-        <textarea id="englishInput" name="englishInput" rows="10" cols="50" maxlength="2000"></textarea>
+        <textarea class="textbox" id="englishInput"  name="englishInput" rows="10" cols="50" maxlength="2000"></textarea>
     </div>
 
     <div class="buttonarea" id="divBtnPerform" style="border:2px solid Violet">
         <input type="button" id="btnPerform" name="button_perform" value="Transliterate">
     </div>
 
-    <div id="divResultTextbox" style="border:2px solid Green">
+    <div class = "outputSection" id="divResultTextbox">
         <h2>Result text box for tgw</h2>
         <p>output text here</p>
         <label id="lblOutput">asdfsadf</label>
