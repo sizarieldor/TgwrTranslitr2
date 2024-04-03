@@ -1,6 +1,9 @@
 @font-face {
-    font-family: "Tengwar";
-    src: url('tngan.ttf') format('truetype');
+    font-family: "Tengwar Annatar";
+    /*TODO
+     add italic Tengwar
+     add Tengwar Noldor*/
+    src: url('../main/fonts/tngan.ttf') format('truetype');
 }
 
 .page {
@@ -14,6 +17,7 @@ position-relative;
 body {
   background:lightgrey;
   margin: 10;
+  font-family: Calibri, Tahoma;
 }
 
 .page{
@@ -29,14 +33,16 @@ body {
 }
 
 .buttonarea {
-    vertical-align:middle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .textbox {
     padding: 5px;
 }
 
-.textSection{
+.inputSection{
     padding: 5px;
     border:2px solid Tomato;
 }
@@ -44,5 +50,6 @@ body {
 .outputSection{
     padding: 5px;
     border:2px solid Green;
-    font-family: "Tengwar", Calibri, Tahoma
+    font-family: "Tengwar Annatar", Calibri, Tahoma
+
 }

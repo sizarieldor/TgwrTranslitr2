@@ -3,19 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="Tengwar, Transliterator, Elvish, LotR, Tolkien">
+    <meta name="author" content="Ivan Toshev">
+
     <title>Tengwar Transliterator</title>
     <link href="styles.css" rel="stylesheet"/>
-
-
 </head>
 <body class="page">
+<nav>
+    <a href="Transliterator">Transliterator</a>
+    <a href="About.html">About</a>
+</nav>
+
 Text outside paragraph.
 <div><h1>This is heading 1</h1> Text inside div.</div>
 Text after div.
 
 <div class="my-container">
 
-    <div class="textSection" id="divEnglishInput" ;>
+    <div class="inputSection" id="divEnglishInput";>
         <form>
             <!-- TODO metohd -->
         </form>
@@ -26,13 +32,27 @@ Text after div.
 
     <div class="buttonarea" id="divBtnPerform" style="border:2px solid Violet">
         <input type="button" id="btnPerform" name="button_perform" value="Transliterate">
+        <script>
+            document.getElementById("englishInput").innerHTML = "new text";
+        </script>
     </div>
 
     <div class = "outputSection" id="divResultTextbox">
-        <h2>Result text box for tgw</h2>
+        <h2>Result text box for tgw jL</h2>
         <p>output text here</p>
         <label id="lblOutput">asdfsadf</label>
     </div>
 </div>
+<br>
+<div class="my-container">
+    <div class="inputSection" id="">
+
+    </div>
+</div>
+<p><a href="About.html">About this project</a></p>
+
+<footer><p>Author: Ivan Toshev</p></footer>
 </body>
 </html>
+
+<!-- https://www.digitalocean.com/community/tutorials/how-to-load-and-use-custom-fonts-with-css -->
