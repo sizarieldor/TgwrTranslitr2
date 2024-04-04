@@ -31,16 +31,13 @@ Text after div.
     </div>
 
     <div class="buttonarea" id="divBtnPerform" style="border:2px solid Violet">
-        <input type="button" id="btnPerform" name="button_perform" value="Transliterate">
-        <script>
-            document.getElementById("englishInput").innerHTML = "new text";
-        </script>
+        <button type="button" onclick="changeOutputText()">Transliterate</button>
+        <!--
+        <input type="button" id="btnPerform" name="button_perform" value="Transliterate" onclick=document.getElementById("lblOutput").innerHMTL = "testStrin"> -->
     </div>
 
     <div class = "outputSection" id="divResultTextbox">
-        <h2>Result text box for tgw jL</h2>
-        <p>output text here</p>
-        <label id="lblOutput">asdfsadf</label>
+        <label id="lblOutput">qwerty</label>
     </div>
 </div>
 <br>
@@ -53,8 +50,12 @@ Text after div.
 
 <footer><p>Author: Ivan Toshev</p></footer>
 
-<script src="script.js">
+<script>
+    function changeOutputText(){
+        let testString = document.getElementById("englishInput").value;
+        document.getElementById("lblOutput").innerHMTL = "testString";
 
+    }
 </script>
 </body>
 </html>
